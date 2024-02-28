@@ -1,21 +1,81 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<h1>HI !!!!</h1>
+<!-- interpolation -->
+<b>NAME : {{name}}</b>
+<br>
+<b>Age : {{age}}</b>
+<br>
+<!-- one way binding -->
+<span [innerText]="age"></span>
+<!-- two way data binding -->
+<br>
+<input type="text" [(ngModel)]="name" value="name" />
+<br>
+<!-- property binding example -->
+<br>
+<h2 [style.color]="getcolor()">PROPERTY</h2>
+<img [src]="kblimage">
+<br>
+<!-- event binding -->
+<br>
+{{switch}}
+<br>
+<button (click)="switch=!switch">Switch</button>
+<!-- other syntax of event binding -->
+<!-- <br>
+{{switch2}}
+<button on-click="switch2=!switch2">Switch 2</button> -->
+<br>
+<!-- Attribute Directive ngClass -->
+<h3 ngClass="centered-text underlined" class="orange">
+    {{name}} example
+</h3>
+<!-- Attribute Directive ngStyle -->
+<p style="padding: 1rem" [ngStyle]="alertStyles">This is sample</p>
 
-<router-outlet></router-outlet>
+-----------------------------------------------------------------<br>
+<!-- Structural Directive -->
+<!-- in list of array of customers -- CUSTOMER is one element -->
+<!-- NOTE : multiple structural directive can never be added to on element.  
+means *ngIF and *ngFor can not be uses together  -->
+<br>
+<!-- <button (click)="choose=!choose">CLICK TO CHECK DETAILS</button>
+<br>
+<div *ngIf="choose">
+</div> -->
+
+<input type="text" [(ngModel)]="tab" />
+<div [ngSwitch]="tab">
+    <div *ngSwitchCase="1">Tab content 1</div>
+    <div *ngSwitchCase="2">
+        <div *ngIf="choose">
+        </div>
+        <button (click)="choose=!choose">CLICK TO CHECK DETAILS</button>
+        <br>
+        <div *ngFor="let customer of customers; let i=index;let isEven=even;">
+            <!-- interpolation -->
+            <!-- <div>{{customer}}</div> -->
+            <div>{{i}}</div>
+            <div>{{isEven}}</div>
+            <div>{{customer.name}}</div>
+            <div>{{customer.age}}</div>
+            <div *ngFor="let child of customer.child">
+                Child Name: {{child.childname}}
+            </div>
+            <br>
+        </div>
+    </div>
+    <div *ngSwitchCase="3">Tab content 3</div>
+    <div *ngSwitchDefault>
+        Select a tab 1 or 2 or 3
+        <div>Tab content 1</div>
+        <div>Tab content 2</div>
+        <div>Tab content 3</div>
+    </div>
+</div>
+<!--  appStyleChange--- selector of directive.ts file-->
+<!-- custom directive concept -->
+<h2 appStyleChange>This is for custom directive</h2>
+<div class="big">Css Style Implementation</div>
+<div>Without style</div>
+<div appRenderStyle>Directive Style Implementation</div>
+<app-dependancy></app-dependancy>

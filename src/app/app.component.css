@@ -1,0 +1,16 @@
+.underlined {
+    border-bottom: 1px solid #ccc;
+}
+
+.orange {
+    color: orange;
+}
+
+/* alertStyles = {
+    'color': 'red',
+        'font-weight': 'bold',
+        'borderBottom': this.borderStyle
+} */
+.big {
+    font-size: 2.2rem;
+}

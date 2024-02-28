@@ -1,0 +1,15 @@
+<br>
+{{Training}}
+<button (click)="logger()">Show Table</button>
+<div *ngFor="let customer of customers; let i=index;let isEven=even;">
+  <!-- interpolation -->
+  <!-- <div>{{customer}}</div> -->
+  <div>{{i}}</div>
+  <div>{{isEven}}</div>
+  <div>{{customer.name}}</div>
+  <div>{{customer.age}}</div>
+  <div *ngFor="let child of customer.child">
+    Child Name: {{child.childname}}
+  </div>
+  <br>
+</div>
